@@ -35,3 +35,5 @@ function MainNotes() {
     </div>
   )
 }
+
+export default MainNotes
