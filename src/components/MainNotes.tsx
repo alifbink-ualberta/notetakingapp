@@ -14,7 +14,7 @@ function MainNotes() {
       content: "",
       tags: [],
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date().toLocaleString()
   }
 
   setNotes((oldNotes) => [newNote, ...oldNotes])
@@ -27,7 +27,7 @@ function MainNotes() {
   const handleUpdate = (updatedNote: Note) => {
     setNotes((oldNotes) =>
       oldNotes.map((note) =>
-        note.id === updatedNote.id ? {...updatedNote, updatedAt: new Date() }: note
+        note.id === updatedNote.id ? {...updatedNote, updatedAt: new Date().toLocaleString() }: note
       )
     )
   }

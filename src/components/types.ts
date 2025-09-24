@@ -3,7 +3,7 @@ export type Note = {
   title: string
   content: string
   tags: string[]
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string | Date
+  updatedAt: string
 }
 
