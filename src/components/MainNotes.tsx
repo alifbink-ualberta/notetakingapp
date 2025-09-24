@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Note } from "./types"
 import NoteView from "./NoteView"
 import NoteList from "./Notelist"  // Windows is case insensitive, NoteList.tsx is registered as Notelist.tsx
+import Button from "./Button"
 
 function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([])
@@ -21,6 +22,7 @@ function MainNotes() {
   setSelectedNoteId(newNote.id)
 }
 
+  /* TODO: useMemo and useCallback should be used here */
 
   /* handleUpdate takes the updatedNote as parameter -> setNotes takes all notes as parameter and 
   searches through to check for same id - updates if found, otherwise lets it be as it is. */
@@ -37,9 +39,9 @@ function MainNotes() {
 
   
   return (
-    <div className="main">
+    <div className="main-notes">
         <div className="note-list">
-          <button onClick={handleAddNote}>Add Note</button>
+          <Button label="+ Create New Note" handleClick={handleAddNote}/>
 
           <NoteList 
               notes={notes} 
