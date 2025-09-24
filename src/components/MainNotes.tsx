@@ -7,13 +7,27 @@ function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([])
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null)
 
+  const handleAddNote = () => {
+    const newNote: Note = {
+      id: crypto.randomUUID(),
+      title: "Untitled",
+      content: "",
+      tags: [],
+      createdAt: new Date(),
+      updatedAt: new Date()
+  }
+
+  setNotes((oldNotes) => [newNote, ...oldNotes])
+  setSelectedNoteId(newNote.id)
+}
+
 
   /* handleUpdate takes the updatedNote as parameter -> setNotes takes all notes as parameter and 
   searches through to check for same id - updates if found, otherwise lets it be as it is. */
   const handleUpdate = (updatedNote: Note) => {
     setNotes((oldNotes) =>
       oldNotes.map((note) =>
-        note.id === updatedNote.id ? updatedNote : note
+        note.id === updatedNote.id ? {...updatedNote, updatedAt: new Date() }: note
       )
     )
   }
@@ -24,10 +38,15 @@ function MainNotes() {
   
   return (
     <div className="main">
-        <NoteList 
-            notes={notes} 
-            onSelect={setSelectedNoteId}
-        />
+        <div className="note-list">
+          <button onClick={handleAddNote}>Add Note</button>
+
+          <NoteList 
+              notes={notes} 
+              onSelect={setSelectedNoteId}
+          />
+        </div>
+
         <NoteView
             note={selectedNote}
             onUpdate={handleUpdate}

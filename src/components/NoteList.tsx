@@ -1,6 +1,5 @@
 import { Note } from "./types.ts"
 import ListCard from "./ListCard.tsx"
-import Button from "./Button.tsx"
 
 type NoteListProps = {
   notes: Note[]
