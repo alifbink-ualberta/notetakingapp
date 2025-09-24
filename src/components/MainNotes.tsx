@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Note } from "./types"
 import NoteView from "./NoteView"
-import NoteList from "./Notelist"
+import NoteList from "./Notelist"  // Windows is case insensitive, NoteList.tsx is registered as Notelist.tsx
 
 function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([])
