@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Note } from "./types"
+import { Note, formatDate } from "./types"
 import NoteView from "./NoteView"
 import NoteList from "./Notelist"  // Windows is case insensitive, NoteList.tsx is registered as Notelist.tsx
 import Button from "./Button"
@@ -15,7 +15,7 @@ function MainNotes() {
       content: "",
       tags: [],
       createdAt: new Date(),
-      updatedAt: new Date().toLocaleString()
+      updatedAt: formatDate(new Date())
   }
 
   setNotes((oldNotes) => [newNote, ...oldNotes])
@@ -29,7 +29,7 @@ function MainNotes() {
   const handleUpdate = (updatedNote: Note) => {
     setNotes((oldNotes) =>
       oldNotes.map((note) =>
-        note.id === updatedNote.id ? {...updatedNote, updatedAt: new Date().toLocaleString() }: note
+        note.id === updatedNote.id ? {...updatedNote, updatedAt: formatDate(new Date()) }: note
       )
     )
   }
