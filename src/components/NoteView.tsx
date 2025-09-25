@@ -21,7 +21,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
       />
       <input
         type="text"
-        value={note.tags.join(", ")}
+        value={note.tags.join(",")}
         onChange={(e) => onUpdate({ ...note, 
           tags: e.target.value.split(",").map(tag => tag.trim())})}
       />

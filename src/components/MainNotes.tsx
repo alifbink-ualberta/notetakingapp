@@ -6,7 +6,10 @@ import Button from "./Button"
 
 function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([])
-  const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null)
+  const [selectedNoteId, setSelectedNoteId] = useState<string>("")
+
+  /* selectedNote is found from the notes array using id - on any change, handleUpdate is called */
+  const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
 
   const handleAddNote = () => {
     const newNote: Note = {
@@ -22,6 +25,28 @@ function MainNotes() {
   setSelectedNoteId(newNote.id)
 }
 
+  const handleCancelNote = (noteId: string) => {
+    const noteToCancel = notes.find((n) => n.id === noteId);
+    if (noteToCancel) {
+      // If the note is new and empty, remove it from the list
+      if (noteToCancel.title === "Untitled" && noteToCancel.content === "") {
+        setNotes((oldNotes) => oldNotes.filter((n) => n.id !== noteId));
+        setSelectedNoteId("");
+      } else {
+        // Otherwise, just deselect the note
+        setSelectedNoteId("");
+      }
+    }
+  }
+
+  const handleSaveNote = (noteId: string) => {
+    const noteToSave = notes.find((n) => n.id === noteId);
+    if (noteToSave) {
+      localStorage.setItem("notes", JSON.stringify(notes));
+      alert("Note saved!");
+    }
+  }
+
   /* TODO: useMemo and useCallback should be used here */
 
   /* handleUpdate takes the updatedNote as parameter -> setNotes takes all notes as parameter and 
@@ -34,10 +59,8 @@ function MainNotes() {
     )
   }
 
-  /* selectedNote is found from the notes array using id - on any change, handleUpdate is called */
-  const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
 
-  
+
   return (
     <div className="main-notes">
         <div className="note-list">
@@ -49,10 +72,14 @@ function MainNotes() {
           />
         </div>
 
-        <NoteView
-            note={selectedNote}
-            onUpdate={handleUpdate}
-        />
+        <div className="divider">
+          <NoteView
+              note={selectedNote}
+              onUpdate={handleUpdate}
+          />
+          <Button label="Save" handleClick={handleSaveNote}/>
+          <Button label="Cancel" handleClick={handleCancelNote}/>
+        </div>
     </div>
   )
 }
