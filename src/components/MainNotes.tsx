@@ -6,7 +6,7 @@ import Button from "./Button"
 
 function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([])
-  const [selectedNoteId, setSelectedNoteId] = useState<string>("")
+  const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null)
 
   /* selectedNote is found from the notes array using id - on any change, handleUpdate is called */
   const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
@@ -25,27 +25,32 @@ function MainNotes() {
   setSelectedNoteId(newNote.id)
 }
 
-  const handleCancelNote = (noteId: string) => {
-    const noteToCancel = notes.find((n) => n.id === noteId);
+  const handleCancelNote = () => {
+    if (!selectedNoteId) return;
+    const noteToCancel = notes.find((n) => n.id === selectedNoteId);
     if (noteToCancel) {
       // If the note is new and empty, remove it from the list
       if (noteToCancel.title === "Untitled" && noteToCancel.content === "") {
-        setNotes((oldNotes) => oldNotes.filter((n) => n.id !== noteId));
-        setSelectedNoteId("");
+        setNotes((oldNotes) => oldNotes.filter((n) => n.id !== selectedNoteId));
+        setSelectedNoteId(null);
       } else {
         // Otherwise, just deselect the note
-        setSelectedNoteId("");
+        setSelectedNoteId(null);
       }
     }
   }
 
-  const handleSaveNote = (noteId: string) => {
-    const noteToSave = notes.find((n) => n.id === noteId);
-    if (noteToSave) {
-      localStorage.setItem("notes", JSON.stringify(notes));
-      alert("Note saved!");
-    }
-  }
+const handleSaveNote = () => {
+  if (!selectedNoteId) return
+  const noteToSave = notes.find((n) => n.id === selectedNoteId)
+  if (!noteToSave) return
+
+  // save into localStorage
+  localStorage.setItem("notes", JSON.stringify(notes))
+
+  // optional: clear selection
+  setSelectedNoteId(null)
+}
 
   /* TODO: useMemo and useCallback should be used here */
 

@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.main-notes {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
