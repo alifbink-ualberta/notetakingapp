@@ -21,7 +21,7 @@ function MainNotes() {
       updatedAt: formatDate(new Date())
   }
 
-  setNotes((oldNotes) => [newNote, ...oldNotes])
+  setNotes((oldNotes) => [newNote, ...oldNotes]) // add new note to the start of the array
   setSelectedNoteId(newNote.id)
 }
 

@@ -11,7 +11,7 @@ function ListCard({note, onSelect} : ListCardProps){
         className="list-card" 
         onClick={() => onSelect(note.id)} // click to select this note
         >
-            <h3>{note.title || "Untitled"}</h3>
+            <h3 className="title">{note.title}</h3>
             <div className="tags">
                 {note.tags.length > 0 ? (
                     note.tags.map((tag) => (
