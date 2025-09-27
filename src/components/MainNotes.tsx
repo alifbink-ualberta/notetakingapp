@@ -8,6 +8,9 @@ function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([])
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null)
 
+  /* selectedNote is found from the notes array using id - on any change, handleUpdate is called */
+  const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
+
   const handleAddNote = () => {
     const newNote: Note = {
       id: crypto.randomUUID(),
@@ -18,8 +21,35 @@ function MainNotes() {
       updatedAt: formatDate(new Date())
   }
 
-  setNotes((oldNotes) => [newNote, ...oldNotes])
+  setNotes((oldNotes) => [newNote, ...oldNotes]) // add new note to the start of the array
   setSelectedNoteId(newNote.id)
+}
+
+  const handleCancelNote = () => {
+    if (!selectedNoteId) return;
+    const noteToCancel = notes.find((n) => n.id === selectedNoteId);
+    if (noteToCancel) {
+      // If the note is new and empty, remove it from the list
+      if (noteToCancel.title === "Untitled" && noteToCancel.content === "") {
+        setNotes((oldNotes) => oldNotes.filter((n) => n.id !== selectedNoteId));
+        setSelectedNoteId(null);
+      } else {
+        // Otherwise, just deselect the note
+        setSelectedNoteId(null);
+      }
+    }
+  }
+
+const handleSaveNote = () => {
+  if (!selectedNoteId) return
+  const noteToSave = notes.find((n) => n.id === selectedNoteId)
+  if (!noteToSave) return
+
+  // save into localStorage
+  localStorage.setItem("notes", JSON.stringify(notes))
+
+  // optional: clear selection
+  setSelectedNoteId(null)
 }
 
   /* TODO: useMemo and useCallback should be used here */
@@ -34,10 +64,8 @@ function MainNotes() {
     )
   }
 
-  /* selectedNote is found from the notes array using id - on any change, handleUpdate is called */
-  const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
 
-  
+
   return (
     <div className="main-notes">
         <div className="note-list">
@@ -49,10 +77,14 @@ function MainNotes() {
           />
         </div>
 
-        <NoteView
-            note={selectedNote}
-            onUpdate={handleUpdate}
-        />
+        <div className="divider">
+          <NoteView
+              note={selectedNote}
+              onUpdate={handleUpdate}
+          />
+          <Button label="Save" handleClick={handleSaveNote}/>
+          <Button label="Cancel" handleClick={handleCancelNote}/>
+        </div>
     </div>
   )
 }

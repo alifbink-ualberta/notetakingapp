@@ -5,6 +5,43 @@
   text-align: center;
 }
 
+.main-notes {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.tag{
+  background-color: #525866;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.note{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: left;
+  width: 300px;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+}
+
+.title{
+  margin: 0;
+  font-weight: 700;
+  color:  rgba(255, 255, 255, 0.87);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

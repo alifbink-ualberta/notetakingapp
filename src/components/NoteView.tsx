@@ -18,13 +18,17 @@ function NoteView({ note, onUpdate }: NoteProps) {
         type="text"
         value={note.title}
         onChange={(e) => onUpdate({ ...note, title: e.target.value })}
+        className="title"
       />
-      <input
-        type="text"
-        value={note.tags.join(", ")}
-        onChange={(e) => onUpdate({ ...note, 
-          tags: e.target.value.split(",").map(tag => tag.trim())})}
-      />
+      <div>
+        <span>Tags: </span>
+        <input
+          type="text"
+          value={note.tags.join(",")}
+          onChange={(e) => onUpdate({ ...note, 
+            tags: e.target.value.split(",").map(tag => tag.trim())})}
+        />
+      </div>
       <div className="last-edited">
         Last Edited: {note.updatedAt.toLocaleString()}
       </div>
