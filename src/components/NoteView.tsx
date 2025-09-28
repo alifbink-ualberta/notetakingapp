@@ -21,7 +21,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
         className="title"
       />
       <div>
-        <span>Tags: </span>
+        <span>Tags </span>
         <input
           type="text"
           value={note.tags.join(",")}
@@ -30,7 +30,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
         />
       </div>
       <div className="last-edited">
-        Last Edited: {note.updatedAt.toLocaleString()}
+        Last Edited {note.updatedAt.toLocaleString()}
       </div>
 
       <textarea

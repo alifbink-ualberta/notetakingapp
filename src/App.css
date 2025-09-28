@@ -55,6 +55,14 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.cancel{
+  background-color: #424242;
+  color: #99A0AE;
+}
+.cancel:hover {
+  background-color: #232530;
+}
+
 
 .card {
   padding: 2em;

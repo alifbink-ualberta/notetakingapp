@@ -82,8 +82,8 @@ const handleSaveNote = () => {
               note={selectedNote}
               onUpdate={handleUpdate}
           />
-          <Button label="Save" handleClick={handleSaveNote}/>
-          <Button label="Cancel" handleClick={handleCancelNote}/>
+          <Button label="Save Note" handleClick={handleSaveNote}/>
+          <Button label="Cancel" variant="cancel" handleClick={handleCancelNote}/>
         </div>
     </div>
   )
