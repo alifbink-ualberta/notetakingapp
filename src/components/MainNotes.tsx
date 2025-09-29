@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Note, formatDate } from "./types"
 import NoteView from "./NoteView"
 import NoteList from "./Notelist"  // Windows is case insensitive, NoteList.tsx is registered as Notelist.tsx
@@ -6,7 +6,17 @@ import Button from "./Button"
 
 function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([])
+  const [draftNote, setDraftNote] = useState<Note | null>(null)
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null)
+
+  // Load saved notes from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem("notes")
+    if (stored) {
+      setNotes(JSON.parse(stored))
+    }
+  }, [])
+
 
   /* selectedNote is found from the notes array using id - on any change, handleUpdate is called */
   const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
@@ -21,7 +31,8 @@ function MainNotes() {
       updatedAt: formatDate(new Date())
   }
 
-  setNotes((oldNotes) => [newNote, ...oldNotes]) // add new note to the start of the array
+  setDraftNote(newNote) // set draftNote to the new note
+  setNotes((oldNotes) => [newNote, ...oldNotes]) // add new note to the top of the list
   setSelectedNoteId(newNote.id)
 }
 
@@ -40,24 +51,22 @@ function MainNotes() {
     }
   }
 
-const handleSaveNote = () => {
-  
-  if (!selectedNoteId) return
-  
-  const noteToSave = notes.find((n) => n.id === selectedNoteId)
-  if (!noteToSave) return
+  const handleSaveNote = () => {
+    if (!selectedNoteId) return
+    
+    const noteToSave = notes.find((n) => n.id === selectedNoteId)
+    if (!noteToSave) return
 
-  if (!noteToSave.tags || noteToSave.tags.length === 0) {
-    alert("Please add at least one tag before saving.");
-    return;
+    if (!noteToSave.tags || noteToSave.tags.length === 0) {
+      alert("Please add at least one tag before saving.")
+      return
+    }
+
+    // Save the whole notes array
+    localStorage.setItem("notes", JSON.stringify(notes))
+
+    setSelectedNoteId(null) // optional
   }
-
-  // save into localStorage
-  localStorage.setItem("notes", JSON.stringify(notes))
-
-  // optional: clear selection
-  setSelectedNoteId(null)
-}
 
   /* TODO: useMemo and useCallback should be used here */
 
