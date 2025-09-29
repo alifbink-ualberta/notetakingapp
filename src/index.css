@@ -85,13 +85,15 @@ textarea {
   outline: none;
   border-radius: 6px;
   transition: border-color 0.25s ease;
-  width: 50vw;
+  min-width: 50vw;
+  width: 100%;
 }
 
 textarea {
   min-height: 120px;
   min-width: 250px;
   height: 60vh;
+  width: 100%;
   resize: none;
 }
 

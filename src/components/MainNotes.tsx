@@ -17,9 +17,16 @@ function MainNotes() {
     }
   }, [])
 
-
-  /* selectedNote is found from the notes array using id - on any change, handleUpdate is called */
   const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
+
+  // Sync draftNote with selectedNote when selectedNoteId changes
+
+  useEffect(() => {
+    if (selectedNoteId) {
+      const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
+      setDraftNote(selectedNote ? { ...selectedNote } : null) // copy to draft
+    }
+  }, [selectedNoteId, notes])
 
   const handleAddNote = () => {
     const newNote: Note = {
@@ -37,19 +44,10 @@ function MainNotes() {
 }
 
   const handleCancelNote = () => {
-    if (!selectedNoteId) return;
-    const noteToCancel = notes.find((n) => n.id === selectedNoteId);
-    if (noteToCancel) {
-      // If the note is new and empty, remove it from the list
-      if (noteToCancel.title === "Untitled" && noteToCancel.content === "") {
-        setNotes((oldNotes) => oldNotes.filter((n) => n.id !== selectedNoteId));
-        setSelectedNoteId(null);
-      } else {
-        // Otherwise, just deselect the note
-        setSelectedNoteId(null);
-      }
-    }
+    setDraftNote(null) // throw away unsaved edits
+    setSelectedNoteId(null)
   }
+
 
   const handleSaveNote = () => {
     if (!selectedNoteId) return
@@ -80,11 +78,13 @@ function MainNotes() {
     )
   }
 
-
+  function handleDeleteNote(): void {
+    throw new Error("Function not implemented.")
+  }
 
   return (
     <div className="main-notes">
-        <div className="note-list">
+        <div className="note-list-with-btn">
           <Button label="+ Create New Note" handleClick={handleAddNote}/>
 
           <NoteList 
@@ -93,13 +93,18 @@ function MainNotes() {
           />
         </div>
 
-        <div className="divider">
+        <div className="note-view">
           <NoteView
               note={selectedNote}
               onUpdate={handleUpdate}
           />
-          <Button label="Save Note" handleClick={handleSaveNote}/>
-          <Button label="Cancel" variant="cancel" handleClick={handleCancelNote}/>
+          <div className="save-cancel-btns">
+            <Button label="Save Note" handleClick={handleSaveNote}/>
+            <Button label="Cancel" variant="cancel" handleClick={handleCancelNote}/>
+          </div>
+        </div>
+        <div className="special-btns">
+          <Button label="Delete Note" variant="special" handleClick={handleDeleteNote}/>
         </div>
     </div>
   )

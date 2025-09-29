@@ -8,7 +8,7 @@ type NoteListProps = {
 
 function NoteList( {notes, onSelect} : NoteListProps) {
     return (
-        <div>
+        <div className="note-list">
             {notes.map((noteItem) => (
                 <ListCard 
                 note={noteItem} 

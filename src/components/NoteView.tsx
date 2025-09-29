@@ -19,7 +19,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
         value={note.title}
         onChange={(e) => onUpdate({ ...note, title: e.target.value })}
         className="title note-title"
-        placeholder="Enter a title"
+        placeholder="Enter a title..."
       />
       <div>
         <span>Tags </span>

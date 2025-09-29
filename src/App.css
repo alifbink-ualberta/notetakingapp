@@ -3,11 +3,13 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  letter-spacing: -0.5px;
 }
 
 .main-notes {
   display: flex;
   gap: 2rem;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
@@ -33,7 +35,7 @@
   padding: 1rem;
   height: 80vh;
   text-align: left;
-  width: 60vw;
+  width: 100%;
   box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
 }
 
@@ -48,6 +50,32 @@
   font-size: 1.2rem;
 }
 
+.note-title::placeholder{
+  color: #FFF;
+}
+
+.note-view{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.note-list{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  height: 80vh;
+  overflow-y: scroll;
+  text-align: left;
+  width: 25vw;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -59,6 +87,16 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.special{
+  background-color: #0E121B;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.special:hover {
+  background-color: #0E121B;
 }
 
 .cancel{
