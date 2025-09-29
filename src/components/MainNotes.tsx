@@ -14,7 +14,7 @@ function MainNotes() {
   const handleAddNote = () => {
     const newNote: Note = {
       id: crypto.randomUUID(),
-      title: "Untitled",
+      title: "",
       content: "",
       tags: [],
       createdAt: new Date(),
@@ -41,9 +41,16 @@ function MainNotes() {
   }
 
 const handleSaveNote = () => {
+  
   if (!selectedNoteId) return
+  
   const noteToSave = notes.find((n) => n.id === selectedNoteId)
   if (!noteToSave) return
+
+  if (!noteToSave.tags || noteToSave.tags.length === 0) {
+    alert("Please add at least one tag before saving.");
+    return;
+  }
 
   // save into localStorage
   localStorage.setItem("notes", JSON.stringify(notes))

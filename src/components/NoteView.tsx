@@ -13,12 +13,13 @@ function NoteView({ note, onUpdate }: NoteProps) {
   }
 
   return (
-    <div className="note">
+    <form className="note">
       <input
         type="text"
         value={note.title}
         onChange={(e) => onUpdate({ ...note, title: e.target.value })}
-        className="title"
+        className="title note-title"
+        placeholder="Enter a title"
       />
       <div>
         <span>Tags </span>
@@ -27,6 +28,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
           value={note.tags.join(",")}
           onChange={(e) => onUpdate({ ...note, 
             tags: e.target.value.split(",").map(tag => tag.trim())})}
+          placeholder="Add tags separated by commas (e.g., Work, Personal)"
         />
       </div>
       <div className="last-edited">
@@ -36,9 +38,10 @@ function NoteView({ note, onUpdate }: NoteProps) {
       <textarea
         value={note.content}
         onChange={(e) => onUpdate({ ...note, content: e.target.value })}
+        placeholder="Start typing your note here..."
       />
       
-    </div>
+    </form>
   )
 }
 

@@ -20,7 +20,7 @@ function ListCard({note, onSelect} : ListCardProps){
                         </span>
                     ))
                 ) : (
-                    <span className="no-tags">No tags</span>
+                    <></>
                 )}
             </div>
             <div className="last-edited">
