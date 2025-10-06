@@ -79,7 +79,14 @@ function MainNotes() {
   }
 
   function handleDeleteNote(): void {
-    throw new Error("Function not implemented.")
+    if (!selectedNoteId) return;
+    const confirmed = window.confirm("Are you sure you want to delete this note?");
+    if (confirmed) {
+      setNotes((oldNotes) => oldNotes.filter((note) => note.id !== selectedNoteId));
+      setSelectedNoteId(null);
+      setDraftNote(null);
+      localStorage.setItem("notes", JSON.stringify(notes.filter((note) => note.id !== selectedNoteId)));
+    }
   }
 
   return (
