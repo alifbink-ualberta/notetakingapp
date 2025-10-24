@@ -17,16 +17,9 @@ function MainNotes() {
     }
   }, [])
 
-  const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
-
-  // Sync draftNote with selectedNote when selectedNoteId changes
-
   useEffect(() => {
-    if (selectedNoteId) {
-      const selectedNote = notes.find((n) => n.id === selectedNoteId) || null
-      setDraftNote(selectedNote ? { ...selectedNote } : null) // copy to draft
-    }
-  }, [selectedNoteId, notes])
+      localStorage.setItem("notes", JSON.stringify(notes));
+    }, [notes]);
 
   const handleAddNote = () => {
     const newNote: Note = {
@@ -36,12 +29,12 @@ function MainNotes() {
       tags: [],
       createdAt: new Date(),
       updatedAt: formatDate(new Date())
-  }
+    }
 
-  setDraftNote(newNote) // set draftNote to the new note
-  setNotes((oldNotes) => [newNote, ...oldNotes]) // add new note to the top of the list
-  setSelectedNoteId(newNote.id)
-}
+    setDraftNote(newNote) // set draftNote to the new note
+    setNotes((oldNotes) => [newNote, ...oldNotes]) // add new note to the top of the list
+    setSelectedNoteId(newNote.id)
+  }
 
   const handleCancelNote = () => {
     setDraftNote(null) // throw away unsaved edits

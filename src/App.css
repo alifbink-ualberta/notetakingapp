@@ -12,7 +12,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .tags {
@@ -21,14 +21,17 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1rem;
+  font-size: 0.7em;
 }
 
 .tag{
   background-color: #525866;
-  border-radius: 15px;
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  padding-top: 1px;
+  text-align: center;
 }
 
 .note{
@@ -47,6 +50,7 @@
 
 .title.note-title{
   padding-left: 0;
+  padding-right: 2;
   font-size: 1.2rem;
 }
 
