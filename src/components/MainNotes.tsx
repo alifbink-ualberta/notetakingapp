@@ -114,19 +114,29 @@ function MainNotes() {
 
       {/* Note editor */}
       <div className="note-view">
-        <NoteView note={draftNote} onUpdate={handleUpdateDraft} />
-        <div className="save-cancel-btns">
-          <Button label="Save Note" handleClick={handleSaveNote} />
-          <Button label="Cancel" variant="cancel" handleClick={handleCancelNote} />
-        </div>
-        <div className="special-btns">
-          <Button
-            label="Delete Note"
-            variant="special"
-            handleClick={handleDeleteNote}
-          />
-        </div>
+        {/* Only show NoteView and buttons when a note is open */}
+        {draftNote ? (
+          <>
+            <NoteView note={draftNote} onUpdate={handleUpdateDraft} />
+
+            <div className="save-cancel-btns">
+              <Button label="Save Note" handleClick={handleSaveNote} />
+              <Button label="Cancel" variant="cancel" handleClick={handleCancelNote} />
+            </div>
+
+            <div className="special-btns">
+              <Button
+                label="Delete Note"
+                variant="special"
+                handleClick={handleDeleteNote}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="note-empty"></div>
+        )}
       </div>
+
     </div>
   );
 }

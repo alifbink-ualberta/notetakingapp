@@ -6,7 +6,7 @@
   letter-spacing: -0.5px;
 }
 
-.main-notes {
+.main-layout {
   display: flex;
   gap: 2rem;
   flex-direction: row;

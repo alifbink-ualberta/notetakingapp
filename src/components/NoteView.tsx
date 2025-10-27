@@ -9,7 +9,7 @@ type NoteProps = {
 
 function NoteView({ note, onUpdate }: NoteProps) {
   if (!note) {
-    return <div className="note-empty">Select a note to view</div>
+    return <div className="note-empty"></div>
   }
 
   return (
@@ -42,6 +42,8 @@ function NoteView({ note, onUpdate }: NoteProps) {
       />
       
     </form>
+
+  
   )
 }
 
