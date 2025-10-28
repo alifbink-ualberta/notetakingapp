@@ -23,9 +23,7 @@ function ListCard({note, onSelect} : ListCardProps){
                     <></>
                 )}
             </div>
-            <div className="last-edited">
-                Last edited: {note.updatedAt.toLocaleString()}
-            </div>
+            <div className="last-edited">{note.updatedAt.toLocaleString()}</div>
 
         </div>
     )

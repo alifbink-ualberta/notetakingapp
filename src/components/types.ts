@@ -12,9 +12,8 @@ export const formatDate = (date: Date) => {
     day: "2-digit",
     month: "short",
     year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: undefined, // omit seconds
-    hour12: true,
+    hour: undefined,
+    minute: undefined,
+    second: undefined
   })
 }
