@@ -55,7 +55,7 @@ function MainNotes() {
     if (!draftNote) return;
 
     if (!draftNote.tags || draftNote.tags.length === 0) {
-      alert("Please add at least one tag before saving.");
+      alert("Tags can't be empty.");
       return;
     }
 

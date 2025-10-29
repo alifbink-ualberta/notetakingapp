@@ -13,6 +13,9 @@ function Sidebar({ notes, activeTag, onTagSelect, onClearFilter }: SidebarProps)
 
   return (
     <aside className="sidebar">
+
+      <button className="clear-filter" onClick={onClearFilter}>Show All Notes</button>
+
       <h3 id="tags-title">Tags</h3>
 
       <div className="tags-list">
@@ -22,7 +25,7 @@ function Sidebar({ notes, activeTag, onTagSelect, onClearFilter }: SidebarProps)
           uniqueTags.map((tag) => (
             <div
               key={tag}
-              className={`tag-btn${activeTag === tag ? "active" : ""}`}
+              className={`tag-btn${activeTag === tag ? " active-tag" : ""}`}
               onClick={() => onTagSelect(tag)}
             >
               <img className="tag-icon" src={tagIcon} />
@@ -31,12 +34,6 @@ function Sidebar({ notes, activeTag, onTagSelect, onClearFilter }: SidebarProps)
           ))
         )}
       </div>
-
-      {activeTag && (
-        <div className="clear-filter" onClick={onClearFilter}>
-          Show All Notes
-        </div>
-      )}
     </aside>
   );
 }

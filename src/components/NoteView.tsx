@@ -31,7 +31,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
           placeholder="Add tags separated by commas (e.g., Work, Personal)"
         />
       </div>
-      <div className="last-edited">
+      <div className="last-edited noteview">
         Last Edited {note.updatedAt.toLocaleString()}
       </div>
 
@@ -42,8 +42,6 @@ function NoteView({ note, onUpdate }: NoteProps) {
       />
       
     </form>
-
-  
   )
 }
 

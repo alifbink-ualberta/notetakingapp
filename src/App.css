@@ -55,7 +55,8 @@
   height: 12px;
   margin-right: 4px;
   vertical-align: middle;
-  filter: invert(1);
+  fill: white;
+  background-color: transparent;
 }
 
 .note{
@@ -102,6 +103,12 @@
   text-align: left;
   width: 25vw;
   box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+}
+
+.last-edited{
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.5rem;
 }
 
 .logo {
