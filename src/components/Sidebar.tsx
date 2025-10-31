@@ -1,5 +1,6 @@
 import { Note } from "./types";
-import tagIcon from "../assets/tag-icon.svg";
+import TagIcon from "./icons/TagIcon";
+
 type SidebarProps = {
   notes: Note[];
   activeTag: string | null;
@@ -28,7 +29,7 @@ function Sidebar({ notes, activeTag, onTagSelect, onClearFilter }: SidebarProps)
               className={`tag-btn${activeTag === tag ? " active-tag" : ""}`}
               onClick={() => onTagSelect(tag)}
             >
-              <img className="tag-icon" src={tagIcon} />
+              <TagIcon size={16} color="white" className="tag-icon"/>
               <span>{tag}</span>
             </div>
           ))
