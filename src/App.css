@@ -5,6 +5,8 @@
   text-align: center;
   letter-spacing: -0.5px;
   transition: all 0.2s linear;
+  --background-color: #0E121B;
+  --btn-color: rgb(51, 92, 255)
 }
 
 .main-layout {
@@ -14,6 +16,16 @@
   align-items: flex-start;
   justify-content: center;
   flex-wrap: nowrap;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 200px;
+  min-width: 150px;
+  height: 100vh;
 }
 
 .tags {
@@ -40,25 +52,58 @@
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 0.7em;
+  font-size: 1em;
 }
 
 .tag-btn:hover{
   background-color: none;
 }
 
-.tag-btn:hover{
-  background-color: none;
-}
-
-.tag-icon{
+.tag-icon {
   width: 12px;
   height: 12px;
   margin-right: 4px;
   vertical-align: middle;
   fill: white;
+  transition: fill 0.2s ease;
+}
+
+.tag-btn:hover .tag-icon,
+.active-tag .tag-icon,
+.clear-filter:hover .tag-icon {
+  fill: var(--btn-color);
+}
+
+.tags-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 0.7em;
+}
+
+#tags-title {
+  margin: 0.5rem;
+}
+
+.clear-filter{
+  display:flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 0.7em;
+  margin-left: 1rem;
+}
+
+.clear-filter:hover {
   background-color: transparent;
 }
+
 
 .note{
   padding: 1rem;
@@ -102,7 +147,7 @@
   height: 80vh;
   overflow-y: scroll;
   text-align: left;
-  width: 100%;
+  width: 200px;
   box-shadow: 0;
 } 
 

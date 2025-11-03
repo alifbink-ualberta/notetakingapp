@@ -1,5 +1,6 @@
 import { Note } from "./types";
 import TagIcon from "./icons/TagIcon";
+import HomeIcon from "./icons/HomeIcon";
 
 type SidebarProps = {
   notes: Note[];
@@ -14,8 +15,11 @@ function Sidebar({ notes, activeTag, onTagSelect, onClearFilter }: SidebarProps)
 
   return (
     <aside className="sidebar">
-
-      <button className="clear-filter" onClick={onClearFilter}>Show All Notes</button>
+      
+      <div className="show-all-tags">
+        
+        <button className="clear-filter" onClick={onClearFilter}><HomeIcon size={16} color="white" className="tag-icon"/>Show All Notes</button>
+      </div>
 
       <h3 id="tags-title">Tags</h3>
 
