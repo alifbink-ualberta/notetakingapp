@@ -186,13 +186,29 @@
 
 .last-edited{
   font-size: 1em;
-  color: rgba(255, 255, 255, 0.6);
+  color: #CACFD8;
   margin-top: 0.5rem;
+}
+
+#tag-input{
+  padding-left: 0;
+}
+
+.last-edited.noteview{
+  display: grid;
+  margin-top: 0.5rem;
+  grid-template-columns: 121px 1fr;
+}
+
+#tags-noteview{
+  display: grid;
+  margin-top: 0.5rem;
+  grid-template-columns: 121px 1fr;
 }
 
 .tag-noteview{
   font-size: 1em;
-  color: rgba(255, 255, 255, 0.6);
+  color: #CACFD8;
   margin-top: 0.5rem;
 }
 
@@ -218,6 +234,10 @@
 
 .special:hover {
   background-color: #0E121B;
+}
+
+#delete-note-btn {
+  width: 100px;
 }
 
 .cancel{

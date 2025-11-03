@@ -4,6 +4,7 @@ import NoteView from "./NoteView"
 import NoteList from "./Notelist"  // Windows is case insensitive, NoteList.tsx is registered as Notelist.tsx
 import Button from "./Button"
 import Sidebar from "./Sidebar";
+import TrashIcon from "./icons/TrashIcon"
 
 function MainNotes() {
   const [notes, setNotes] = useState<Note[]>([]) // for saved notes
@@ -127,7 +128,8 @@ function MainNotes() {
 
             </section>
             <section className="dlt-archive-btns">
-              <div className="special-btns">
+              <div id="delete-note-btn">
+                <TrashIcon/>
                 <Button
                   label="Delete Note"
                   variant="special"

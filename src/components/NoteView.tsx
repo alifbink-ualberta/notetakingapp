@@ -22,9 +22,10 @@ function NoteView({ note, onUpdate }: NoteProps) {
         className="title note-title"
         placeholder="Enter a title..."
       />
-      <div>
+      <div id="tags-noteview">
         <span className="tag-noteview"> <TagIcon className="view-icon"/> <span className="text-noteview">Tags</span></span>
         <input
+          id="tag-input"
           type="text"
           value={note.tags.join(",")}
           onChange={(e) => onUpdate({ ...note, 
@@ -33,7 +34,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
         />
       </div>
       <div className="last-edited noteview">
-        <ClockIcon className="view-icon"/> <span className="text-noteview"> Last Edited {note.updatedAt.toLocaleString()}</span>
+        <span className="text-noteview"><ClockIcon className="view-icon"/>  Last Edited </span> <span>{note.updatedAt.toLocaleString()}</span>
       </div>
 
       <textarea
