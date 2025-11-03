@@ -1,5 +1,6 @@
 import { Note } from "./types"
-
+import TagIcon from "./icons/TagIcon"
+import ClockIcon from "./icons/ClockIcon"
 
 type NoteProps = {
   note: Note | null
@@ -22,7 +23,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
         placeholder="Enter a title..."
       />
       <div>
-        <span>Tags </span>
+        <span className="tag-noteview"> <TagIcon className="view-icon"/> <span className="text-noteview">Tags</span></span>
         <input
           type="text"
           value={note.tags.join(",")}
@@ -32,7 +33,7 @@ function NoteView({ note, onUpdate }: NoteProps) {
         />
       </div>
       <div className="last-edited noteview">
-        Last Edited {note.updatedAt.toLocaleString()}
+        <ClockIcon className="view-icon"/> <span className="text-noteview"> Last Edited {note.updatedAt.toLocaleString()}</span>
       </div>
 
       <textarea
