@@ -6,17 +6,17 @@ type NoteListProps = {
   onSelect: (id: string) => void
 }
 
-function NoteList( {notes, onSelect} : NoteListProps) {
-    return (
-        <div className="note-list">
-            {notes.map((noteItem) => (
-                <ListCard 
-                note={noteItem} 
-                onSelect={onSelect}/>
-            ))}
+function NoteList({ notes, onSelect }: NoteListProps) {
+  return (
+    <div className="note-list">
+      {notes.map((noteItem, index) => (
+        <div key={noteItem.id}>
+          <ListCard note={noteItem} onSelect={onSelect} />
+          {index !== notes.length - 1 && <hr className="break-bar" />}
         </div>
-    )
+      ))}
+    </div>
+  )
 }
-
 
 export default NoteList

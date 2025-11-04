@@ -21,6 +21,13 @@
   flex-wrap: nowrap;
 }
 
+.break-bar {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: #232530;
+  margin: 8px 0;
+}
 
 /* Sidebar styles */
 
@@ -97,13 +104,7 @@
   background-color: var(--selected-tag);
 }
 
-.break-bar {
-  width: 100%;
-  border: 0;
-  height: 1px;
-  background-color: #424242;
-  margin: 1rem 0;
-}
+
 
 /* Note list styles */
 
@@ -170,7 +171,7 @@
   height: 80vh;
   overflow-y: scroll;
   text-align: left;
-  width: 200px;
+  width: 100%;
   box-shadow: 0;
   left: 0;
   top: 0;
