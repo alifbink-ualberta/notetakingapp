@@ -1,5 +1,5 @@
 type ButtonProps = {
-  label?: string; // optional if you want icon-only buttons too
+  label?: string; // optional in case of icon-only buttons
   variant?: "default" | "cancel" | "special";
   handleClick: () => void;
   children?: React.ReactNode; // this enables <Button>...</Button>

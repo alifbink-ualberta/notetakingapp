@@ -15,11 +15,13 @@ function Sidebar({ notes, activeTag, onTagSelect, onClearFilter }: SidebarProps)
   const uniqueTags = Array.from(new Set(notes.flatMap((note) => note.tags))); // flatMap to get all tags from notes, then Set to get unique tags
 
   return (
-    <aside className="sidebar">
+    <nav className="sidebar">
       <LogoIcon/>
       <div className="show-all-tags">
         <button className="clear-filter" onClick={onClearFilter}><HomeIcon size={16} color="white" className="tag-icon"/>Show All Notes</button>
       </div>
+
+      <hr className="break-bar"></hr>
 
       <h3 id="tags-title">Tags</h3>
 
@@ -39,7 +41,7 @@ function Sidebar({ notes, activeTag, onTagSelect, onClearFilter }: SidebarProps)
           ))
         )}
       </div>
-    </aside>
+    </nav>
   );
 }
 

@@ -21,6 +21,7 @@
   flex-wrap: nowrap;
 }
 
+
 /* Sidebar styles */
 
 .sidebar {
@@ -30,7 +31,7 @@
   width: 200px;
   min-width: 150px;
   height: 100vh;
-  position: fixed;
+  padding: 12px 16px;
   left: 0;
   top: 0;
   bottom: 0;
@@ -73,7 +74,8 @@
 }
 
 .tag-btn:hover .tag-icon,
-.clear-filter:hover .tag-icon {
+.clear-filter:hover .tag-icon,
+#delete-note-btn:hover .tag-icon {
   fill: var(--btn-color);
 }
 
@@ -93,6 +95,14 @@
 
 .active-tag {
   background-color: var(--selected-tag);
+}
+
+.break-bar {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: #424242;
+  margin: 1rem 0;
 }
 
 /* Note list styles */
@@ -236,9 +246,13 @@
   background-color: #0E121B;
 }
 
-#delete-note-btn {
-  width: 100px;
+#dlt-id-test {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
 }
+
 
 .cancel{
   background-color: #232530;

@@ -129,12 +129,13 @@ function MainNotes() {
             </section>
             <section className="dlt-archive-btns">
               <div id="delete-note-btn">
-                <TrashIcon/>
                 <Button
-                  label="Delete Note"
                   variant="special"
                   handleClick={handleDeleteNote}
-                />
+                > <span id="dlt-id-test">
+                  <TrashIcon className="tag-icon" />
+                  Delete Note</span>
+                </Button>
               </div>
             </section>
           </>
